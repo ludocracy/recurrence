@@ -1,4 +1,4 @@
-require "test_helper"
+require_relative "../test_helper"
 
 class WeeklyRecurringTest < Minitest::Test
   test "recurs until limit date" do
@@ -141,5 +141,12 @@ class WeeklyRecurringTest < Minitest::Test
 
     assert r.events.include?(1.week.from_now.to_date)
     refute r.events.include?(2.weeks.from_now.to_date)
+  end
+
+  test "calculates :on from :start option" do
+    date = Date.today
+    r = recurrence(every: :week, start: date)
+    assert_equal r.first, date
+    assert_equal date.wday, r.events[2].wday
   end
 end

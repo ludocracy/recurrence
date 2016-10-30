@@ -1,4 +1,4 @@
-require "test_helper"
+require_relative "../../test_helper"
 
 class MonthlyRecurringDayTest < Minitest::Test
   test "recurs until limit date" do
@@ -140,5 +140,12 @@ class MonthlyRecurringDayTest < Minitest::Test
 
     assert r.events.include?(7.months.from_now.to_date)
     refute r.events.include?(8.months.from_now.to_date)
+  end
+
+
+  test "calculates :on from :start option" do
+    date = Date.new(2016, 10, 1)
+    r = recurrence(every: :month, start: date)
+    assert_equal date.day, r.events[2].day
   end
 end
