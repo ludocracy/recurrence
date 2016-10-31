@@ -11,7 +11,7 @@ class Recurrence_
       private
 
       def validate
-        @options[:on] ||= @options[:start] ? @options[:start].day : @date.day
+        @options[:on] ||= @options[:starts] ? @options[:starts].day : @date.day
         if @options.key?(:weekday)
 
           # Allow :on => :last, :weekday => :thursday contruction.

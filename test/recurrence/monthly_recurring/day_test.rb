@@ -145,7 +145,7 @@ class MonthlyRecurringDayTest < Minitest::Test
 
   test "calculates :on from :start option" do
     date = Date.new(2016, 10, 1)
-    r = recurrence(every: :month, start: date)
+    r = recurrence(every: :month, starts: date)
     assert_equal date.day, r.events[2].day
   end
 end
